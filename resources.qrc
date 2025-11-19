@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/SkierStraight.png</file>
+        <file>images/CliffDrop.png</file>
+        <file>images/GameBackground.png</file>
+        <file>images/Rock1.png</file>
+        <file>images/Tree1.png</file>
+        <file>images/Tree2.png</file>
+    </qresource>
+</RCC>

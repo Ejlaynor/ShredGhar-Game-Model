@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+// Forward declaration
+class GameModel;
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -19,5 +22,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    GameModel *gameModel;
+
+
+
+
 };
 #endif // MAINWINDOW_H
