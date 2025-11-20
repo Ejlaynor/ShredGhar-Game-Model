@@ -50,17 +50,27 @@ GameModel::~GameModel() {}
 void GameModel::setupGame()
 {
     // Load and add the skier image and background
-    QPixmap skierPixmap(":/images/images/SkierStraight.png");
     QPixmap backgroundPixmap(":/images/images/GameBackground.png");
+    skierLeftSharp = QPixmap(":/images/images/SkierLeft2.png");
+    skierLeftGentle = QPixmap(":/images/images/SkierLeft3.png");
+    skierStraight = QPixmap(":/images/images/SkierStraight.png");
+    skierRightGentle = QPixmap(":/images/images/SkierRight3.png");
+    skierRightSharp = QPixmap(":/images/images/SkierRight2.png");
 
-    // Scaling Skier Image
-    skierPixmap = skierPixmap.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    // Scale all Skier Images
+    skierLeftSharp = skierLeftSharp.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    skierLeftGentle = skierLeftGentle.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    skierStraight = skierStraight.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    skierRightGentle = skierRightGentle.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    skierRightSharp = skierRightSharp.scaled(75, 75, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
 
     // Adding Skier Image to the Scene
-    skier = scene->addPixmap(skierPixmap);
+    skier = scene->addPixmap(skierStraight);
 
     // Setting the position of the Skier at the top center
-    skier->setPos(375 - skierPixmap.width()/2, 150);
+    // skier->setPos(337.5, 150);
+    skier->setPos(375 - skierStraight.width()/2, 150);
 
 
     // Scaling Background Image
@@ -93,14 +103,13 @@ void GameModel::handleKeyPress(int keyValue){
 
     qDebug() << "currentTurnAngle" << currentTurnAngle;
 
+    updateSkierSprite();
 }
 
 
 void GameModel::updateGame(){
 
-
     updateBackground();
-
 
     // Movement based on currentTurnAngle
     int horizontalMove = 0;
@@ -161,4 +170,30 @@ void GameModel::updateBackground(){
         background2->setPos(0, background1->y() + 750);
     }
 
+}
+
+void GameModel::updateSkierSprite()
+{
+    QPixmap newSprite;
+
+    switch(currentTurnAngle) {
+    case -2:
+        newSprite = skierLeftSharp;
+        break;
+    case -1:
+        newSprite = skierLeftGentle;
+        break;
+    case 0:
+        newSprite = skierStraight;
+        break;
+    case 1:
+        newSprite = skierRightGentle;
+        break;
+    case 2:
+        newSprite = skierRightSharp;
+        break;
+    }
+
+    // Changes (updates) the pixmap while preserving current position
+    skier->setPixmap(newSprite);
 }

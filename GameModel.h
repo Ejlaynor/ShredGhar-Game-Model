@@ -30,12 +30,20 @@ public slots:
 private:
     QGraphicsScene *scene;
     QGraphicsView *view;
-    QGraphicsPixmapItem *skier;  // The skier sprite
 
-
+    // The Background(s)
     QGraphicsPixmapItem *background1;
     QGraphicsPixmapItem *background2;
 
+    // The Skier Sprite
+    QGraphicsPixmapItem *skier;
+
+    // Different Images of the Skier
+    QPixmap skierLeftSharp;    // -2
+    QPixmap skierLeftGentle;   // -1
+    QPixmap skierStraight;     // 0
+    QPixmap skierRightGentle;  // 1
+    QPixmap skierRightSharp;   // 2
 
 
     //Game Time
@@ -60,6 +68,8 @@ private:
 
     // How fast objects are moving up (or skier "down")
     int currentSpeed = 30;
+
+    void updateSkierSprite();
 
 };
 
