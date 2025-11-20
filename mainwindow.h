@@ -24,8 +24,12 @@ private:
     Ui::MainWindow *ui;
     GameModel *gameModel;
 
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 
 
+signals:
+    void arrowKeyPress(int keyValue);
 
 };
 #endif // MAINWINDOW_H
