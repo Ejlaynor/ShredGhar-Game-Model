@@ -131,19 +131,17 @@ void GameModel::updateGame(){
         skier->setX(newX);
     }
 
-
-
 }
 
 
 void GameModel::updateBackground(){
 
     switch(currentTurnAngle) {
-        case -2: currentSpeed = -10; break;
-        case -1: currentSpeed = -20; break;
-        case 0:  currentSpeed = -30; break;
-        case 1:  currentSpeed = -20; break;
-        case 2:  currentSpeed = -10; break;
+        case -2: currentSpeed = -5; break;
+        case -1: currentSpeed = -10; break;
+        case 0:  currentSpeed = -15; break;
+        case 1:  currentSpeed = -10; break;
+        case 2:  currentSpeed = -5; break;
     }
 
 
